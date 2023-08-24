@@ -31,15 +31,15 @@ slug: Learn/Tools_and_testing/Client-side_JavaScript_frameworks/React_getting_st
 
 ## Как React использует JavaScript?
 
-React utilizes features of modern JavaScript for many of its patterns. Its biggest departure from JavaScript comes with the use of [JSX](https://reactjs.org/docs/introducing-jsx.html) syntax. JSX extends JavaScript's syntax so that HTML-like code can live alongside it. For example:
+React использует возможности современного JavaScript для многих своих шаблонов. Самым большим отличием от JavaScript является использование синтаксиса JSX. JSX расширяет синтаксис JavaScript, чтобы рядом с ним мог жить HTML-подобный код. Например:
 
 ```js
 const heading = <h1>Mozilla Developer Network</h1>;
 ```
 
-This heading constant is known as a **JSX expression**. React can use it to render that [`<h1>`](/ru/docs/Web/HTML/Element/Heading_Elements) tag in our app.
+Эта константа заголовка известна как выражение JSX. React может использовать его для рендеринга тега [`<h1>`](/ru/docs/Web/HTML/Element/Heading_Elements) в нашем приложении.
 
-Suppose we wanted to wrap our heading in a [`<header>`](/ru/docs/Web/HTML/Element/header) tag, for semantic reasons? The JSX approach allows us to nest our elements within each other, just like we do with HTML:
+Предположим, мы хотим поместить наш заголовок в тег [`<header>`](/ru/docs/Web/HTML/Element/header) по семантическим причинам? Подход JSX позволяет нам вкладывать наши элементы друг в друга, как мы это делаем в HTML:
 
 ```js
 const header = (
@@ -49,7 +49,7 @@ const header = (
 );
 ```
 
-> **Примечание:** The parentheses in the previous snippet aren't unique to JSX, and don't have any effect on your application. They're a signal to you (and your computer) that the multiple lines of code inside are part of the same expression. You could just as well write the header expression like this:
+> **Примечание:** Круглые скобки в предыдущем фрагменте не являются уникальными для JSX и не влияют на ваше приложение. Они являются сигналом для вас (и вашего компьютера), что несколько строк кода внутри являются частью одного и того же выражения. С таким же успехом вы могли бы написать выражение заголовка следующим образом:
 >
 > ```jsx
 > const header = (
@@ -59,9 +59,10 @@ const header = (
 > );
 > ```
 >
-> However, this looks kind of awkward, because the [`<header>`](/ru/docs/Web/HTML/Element/header) tag that starts the expression is not indented to the same position as its corresponding closing tag.
+> Однако это выглядит несколько неуклюже, поскольку тег [`<header>`](/ru/docs/Web/HTML/Element/header), который начинает выражение, не имеет отступа в той же позиции, что и соответствующий закрывающий тег.
+>
 
-Of course, your browser can't read JSX without help. When compiled (using a tool like [Babel](https://babeljs.io/) or [Parcel](https://parceljs.org/)), our header expression would look like this:
+Конечно, ваш браузер не сможет читать JSX без посторонней помощи. При компиляции (с использованием таких инструментов, как [Babel](https://babeljs.io/) или [Parcel](https://parceljs.org/)) наше выражение заголовка будет выглядеть следующим образом:
 
 ```js
 const header = React.createElement(
@@ -71,19 +72,19 @@ const header = React.createElement(
 );
 ```
 
-It's _possible_ to skip the compilation step and use [`React.createElement()`](https://reactjs.org/docs/react-api.html#createelement) to write your UI yourself. In doing this, however, you lose the declarative benefit of JSX, and your code becomes harder to read. Compilation is an extra step in the development process, but many developers in the React community think that the readability of JSX is worthwhile. Plus, popular tooling makes JSX-to-JavaScript compilation part of its setup process. You don't have to configure compilation yourself unless you want to.
+Можно пропустить этап компиляции и использовать [`React.createElement()`](https://reactjs.org/docs/react-api.html#createelement), чтобы написать свой пользовательский интерфейс самостоятельно. Однако при этом вы теряете декларативные преимущества JSX, и ваш код становится труднее читать. Компиляция — это дополнительный шаг в процессе разработки, но многие разработчики сообщества React считают, что читабельность JSX того стоит. Кроме того, популярные инструменты делают компиляцию JSX-to-JavaScript частью процесса установки. Вам не нужно настраивать компиляцию самостоятельно, если вы этого не хотите.
 
-Because JSX is a blend of HTML and JavaScript, some developers find it intuitive. Others say that its blended nature makes it confusing. Once you're comfortable with it, however, it will allow you build user interfaces more quickly and intuitively, and allow others to better understand your code base at a glance.
+Поскольку JSX представляет собой смесь HTML и JavaScript, некоторые разработчики находят его интуитивно понятным. Другие говорят, что его смешанный характер сбивает с толку. Однако, как только вы освоитесь с ним, он позволит вам создавать пользовательские интерфейсы более быстро и интуитивно, а также позволит другим лучше понять вашу кодовую базу с первого взгляда.
 
-To read more about JSX, check out the React team's [JSX In Depth](https://reactjs.org/docs/jsx-in-depth.html) article.
+Чтобы узнать больше о JSX, ознакомьтесь со статьей [JSX In Depth](https://reactjs.org/docs/jsx-in-depth.html) команды React.
 
 ## Настройка вашего первого React приложения
 
-There are many ways to use React, but we're going to use the command-line interface (CLI) tool create-react-app, as mentioned earlier, which expedites the process of developing a React application by installing some packages and creating some files for you, handling the tooling described above.
+Есть много способов использовать React, но мы собираемся использовать инструмент интерфейса командной строки (CLI) create-react-app, как упоминалось ранее, который ускоряет процесс разработки приложения React за счет установки некоторых пакетов и создания некоторых файлы для вас, используя инструменты, описанные выше.
 
-It's possible to [add React to a website without create-react-app](https://reactjs.org/docs/add-react-to-a-website.html) by copying some [`<script>`](/ru/docs/Web/HTML/Element/script) elements into an HTML file, but the create-react-app CLI is a common starting point for React applications. Using it will allow you spend more time building your app, and less time fussing with setup.
+Можно [добавить React на веб-сайт без create-react-app,](https://reactjs.org/docs/add-react-to-a-website.html) скопировав некоторые элементы [`<script>`](/ru/docs/Web/HTML/Element/script) в HTML-файл, но CLI create-react-app является общей отправной точкой для приложений React. Его использование позволит вам тратить больше времени на создание приложения и меньше времени на настройку.
 
-### Requirements
+### Требования
 
 In order to use create-react-app, you need to have [Node.js](https://nodejs.org/en/) installed. It's recommended that you use the long-term support (LTS) version. Node includes npm (the node package manager), and npx (the node package runner).
 
